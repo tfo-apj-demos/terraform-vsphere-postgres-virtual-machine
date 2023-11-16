@@ -11,7 +11,6 @@ module "vm" {
   resource_pool     = local.tiers[var.tier]
   folder_path       = var.folder_path
 
-
   networks = {
     "seg-general" = "dhcp"
   }
@@ -25,8 +24,4 @@ module "vm" {
     dhcp     = true
     hostname = var.hostname
   })
-
-  vsphere_user     = var.vsphere_user
-  vsphere_password = var.vsphere_password
-  vsphere_server   = var.vsphere_server
 }

@@ -1,22 +1,3 @@
-variable "vsphere_user" {
-  description = "vSphere username"
-  type        = string
-  default = ""
-}
-
-variable "vsphere_password" {
-  description = "vSphere password"
-  type        = string
-  sensitive   = true
-  default = ""
-}
-
-variable "vsphere_server" {
-  description = "vSphere server address"
-  type        = string
-  default = ""
-}
-
 variable "hostname" {
   description = "The hostname of the VM being provisioned."
   type        = string
@@ -70,8 +51,6 @@ variable "tier" {
     error_message = "Tier must be 'gold', 'silver', or 'bronze'."
   }
 }
-
-
 
 variable "security_profile" {
   description = "The security profile for the VM (e.g., web-server, db-server)"

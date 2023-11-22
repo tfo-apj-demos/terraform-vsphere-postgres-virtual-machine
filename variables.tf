@@ -1,10 +1,16 @@
-variable "hostname" {
-  description = "The hostname of the VM being provisioned."
+variable "os_type" {
+  description = "The type of operating system to be provisioned"
   type        = string
   validation {
-    condition     = length(trimspace(var.hostname)) > 0
-    error_message = "The hostname must not be empty and should not contain any leading or trailing whitespace."
+    condition     = var.os_type == "windows" || var.os_type == "linux"
+    error_message = "The os_type must be either 'windows' or 'linux'."
   }
+}
+
+variable "hostname" {
+  description = "The hostname of the VM being provisioned. If left blank a hostname will be generated."
+  type        = string
+  default     = ""
 }
 
 variable "size" {
@@ -73,17 +79,11 @@ variable "backup_policy" {
 variable "folder_path" {
   description = "The path to the VM folder where the virtual machine will be created."
   type        = string
-  default     = "Datacenter/vm/demo workloads"
+  default     = "demo workloads"
 }
 
 variable "custom_text" {
   description = "Custom text to be rendered in userdata."
   type        = string
   default     = "some text to be rendered"
-}
-
-variable "vsphere_template_name" {
-  description = "The name of the vSphere template to use for VM creation."
-  type        = string
-  default     = "postgres-ubuntu-2204-20231103120449"
 }

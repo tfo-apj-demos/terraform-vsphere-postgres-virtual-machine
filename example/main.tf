@@ -4,7 +4,7 @@ terraform {
 
     workspaces {
       project = "aaron-dev"
-      name = "my-first-vm"
+      name = "my-first-db"
     }
   }
 }
@@ -13,13 +13,13 @@ module "postgres-virtual-machine" {
   version = "~> 1"
 
   backup_policy    = "daily"
-  environment      = "dev"
-  site             = "sydney"
-  size             = "medium"
-  storage_profile  = "standard"
+  environment      = "prod"
+  site             = "canberra"
+  size             = "large"
+  storage_profile  = "performance"
   tier             = "gold"
 }
 
 output "vm_name" {
-    value = module.single-virtual-machine.virtual_machine_name
+    value = module.postgres-virtual-machine.virtual_machine_name
 }

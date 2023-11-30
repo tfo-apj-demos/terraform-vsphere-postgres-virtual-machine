@@ -24,12 +24,10 @@ Example usage for provisioning a 'small' size VM in a 'dev' environment located 
 ```hcl
 module "postgres-virtual-machine" {
   source  = "app.terraform.io/tfo-apj-demos/postgres-virtual-machine/vsphere"
-  version = "1.1.1"
+  version = "~> 1"
 
   backup_policy    = "daily"
   environment      = "dev"
-  os_type          = "linux"
-  security_profile = "web-server"
   site             = "sydney"
   size             = "medium"
   storage_profile  = "standard"
@@ -61,8 +59,6 @@ module "postgres-virtual-machine" {
 - [FAQ and Troubleshooting](#faq)
 - [Contributing to This Module](#contributing)
 
-## Stay Updated
-- **Current Version**: 1.1.7
 
 ## Need Help?
 [Contact Us](HashiCorp Solutions Engineering and Architecture)

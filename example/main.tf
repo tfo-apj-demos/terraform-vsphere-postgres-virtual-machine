@@ -18,6 +18,7 @@ module "postgres-virtual-machine" {
   size             = "large"
   storage_profile  = "performance"
   tier             = "gold"
+  database_profile = "public-access"
 }
 
 output "vm_name" {

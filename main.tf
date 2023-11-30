@@ -1,10 +1,3 @@
-data "hcp_packer_image" "postgres-ubuntu-2204" {
-  bucket_name    = "postgres-ubuntu-2204"
-  channel        = "latest"
-  cloud_provider = "vsphere"
-  region         = "Datacenter"
-}
-
 module "vm" {
   source = "github.com/tfo-apj-demos/terraform-vsphere-virtual-machine"
 
@@ -22,7 +15,7 @@ module "vm" {
     backup_policy    = var.backup_policy
     tier             = var.tier
     storage_profile  = var.storage_profile
-    security_profile = var.security_profile
+    security_profile = "db-server"
   }
   folder_path = var.folder_path
   disk_0_size = 80

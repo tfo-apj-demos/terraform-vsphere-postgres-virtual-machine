@@ -40,6 +40,15 @@ variable "storage_profile" {
   }
 }
 
+variable "database_profile" {
+  description = "The security profile for the VM (e.g., private-access, public-access)"
+  type        = string
+  validation {
+    condition     = contains(["private-access", "public-access"], var.database_profile)
+    error_message = "Security profile must be one of 'private-access' or 'public-access'."
+  }
+}
+
 variable "tier" {
   description = "The resource tier for the VM (e.g., gold, silver, bronze)"
   type        = string

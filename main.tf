@@ -15,7 +15,7 @@ module "vm" {
     backup_policy    = var.backup_policy
     tier             = var.tier
     storage_profile  = var.storage_profile
-    security_profile = "db-server"
+    database_profile = var.database_profile
   }
   folder_path = var.folder_path
   disk_0_size = 80

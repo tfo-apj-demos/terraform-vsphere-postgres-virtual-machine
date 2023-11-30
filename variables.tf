@@ -49,15 +49,6 @@ variable "tier" {
   }
 }
 
-variable "security_profile" {
-  description = "The security profile for the VM (e.g., web-server, db-server)"
-  type        = string
-  validation {
-    condition     = contains(["web-server", "db-server"], var.security_profile)
-    error_message = "Security profile must be one of 'web-server' or 'db-server'."
-  }
-}
-
 variable "backup_policy" {
   description = "The backup policy for the VM (e.g., daily, weekly, monthly)"
   type        = string

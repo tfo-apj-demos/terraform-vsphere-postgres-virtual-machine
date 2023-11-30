@@ -36,7 +36,6 @@ locals {
 
   // Security profiles to security group mappings
   security_profile = {
-    "web-server" = "web-server"
     "db-server"  = "db-server"
   }
 
@@ -55,8 +54,15 @@ locals {
     data.vsphere_tag.tier[var.tier].id,
     data.vsphere_tag.backup_policy[var.backup_policy].id,
     data.vsphere_tag.storage_profile[var.storage_profile].id,
-    data.vsphere_tag.security_profile[var.security_profile].id,
+    data.vsphere_tag.security_profile["db-server"].id,
   ]
+}
+
+data "hcp_packer_image" "postgres-ubuntu-2204" {
+  bucket_name    = "postgres-ubuntu-2204"
+  channel        = "latest"
+  cloud_provider = "vsphere"
+  region         = "Datacenter"
 }
 
 # Fetching tag categories

@@ -4,7 +4,7 @@ terraform {
 
     workspaces {
       project = "aaron-dev"
-      name = "my-first-db"
+      name    = "my-first-db"
     }
   }
 }
@@ -22,5 +22,5 @@ module "postgres-virtual-machine" {
 }
 
 output "vm_name" {
-    value = module.postgres-virtual-machine.virtual_machine_name
+  value = module.postgres-virtual-machine.virtual_machine_name
 }

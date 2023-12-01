@@ -4,7 +4,7 @@ terraform {
 
     workspaces {
       project = "aaron-dev"
-      name    = "my-first-db"
+      name    = "my-first-vsphere-db"
     }
   }
 }

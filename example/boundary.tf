@@ -62,6 +62,21 @@ resource "boundary_target" "ssh_this" {
   ingress_worker_filter = "\"vmware\" in \"/tags/platform\""
 }
 
+resource "boundary_target" "postgres_admin" {
+  name                     = "postgres_admin"
+  type                     = "tcp"
+  description              = "Postgres DB target for Admin"
+  scope_id                 = var.scope_id
+  session_connection_limit = -1
+  default_port             = 5432
+  ingress_worker_filter = "\"vmware\" in \"/tags/platform\""
+  egress_worker_filter     = "\"vmware\" in \"/tags/platform\""
+  
+  brokered_credential_source_ids = [
+    #boundary_credential_library_vault.vault_db_admin.id
+  ]
+}
+
 output "ssh_target_id" {
   value       = boundary_target.ssh_this.id
   description = "The ID of the SSH target in Boundary"

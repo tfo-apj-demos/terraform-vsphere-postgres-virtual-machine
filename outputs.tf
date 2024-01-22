@@ -10,7 +10,7 @@ output "vsphere_compute_cluster_id" {
 
 output "virtual_machine" {
   value = tomap({
-    for k, v in module.vm : k => v {
+    for k, v in module.vm : k => {
       id = v.virtual_machine_id
       virtual_machine_name = v.virtual_machine_name
       ip_address = v.ip_address

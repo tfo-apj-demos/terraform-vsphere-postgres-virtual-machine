@@ -20,7 +20,7 @@ output "ip_address" {
 
 output "virtual_machine_details" {
   value = {
-    for idx, vm in local.vms : idx => {
+    for idx, vm in local.vms : vm.virtual_machine_name => {
       virtual_machine_name = vm.virtual_machine_name
       ip_address           = vm.ip_address
     }

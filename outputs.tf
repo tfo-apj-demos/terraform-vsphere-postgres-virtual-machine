@@ -18,6 +18,16 @@ output "virtual_machine" {
   })
 }
 
+output "virtual_machine_test" {
+  value = {
+    for k, v in module.vm : k => {
+      id                   = v.virtual_machine_id
+      virtual_machine_name = v.virtual_machine_name
+      ip_address           = v.ip_address
+    }
+  }
+}
+
 /*output "virtual_machine_name" {
   description = "The name of the virtual machine."
   value       = module.vm.virtual_machine_name

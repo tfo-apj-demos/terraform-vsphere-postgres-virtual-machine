@@ -1,4 +1,19 @@
+data "hcp_packer_image" "postgres-ubuntu-2204" {
+  bucket_name    = "postgres-ubuntu-2204"
+  channel        = "latest"
+  cloud_provider = "vsphere"
+  region         = "Datacenter"
+}
+
 locals {
+  // details for outputs 
+  vms = [
+    {
+      virtual_machine_name = module.vm.virtual_machine_name
+      ip_address           = module.vm.ip_address
+    }
+  ]
+
   // T-shirt size mappings for CPU and memory
   sizes = {
     "small"  = { cpu = 1, memory = 1024 }
@@ -33,11 +48,4 @@ locals {
     "capacity"    = "vsanDatastore"
     "standard"    = "vsanDatastore"
   }
-}
-
-data "hcp_packer_image" "postgres-ubuntu-2204" {
-  bucket_name    = "postgres-ubuntu-2204"
-  channel        = "latest"
-  cloud_provider = "vsphere"
-  region         = "Datacenter"
 }

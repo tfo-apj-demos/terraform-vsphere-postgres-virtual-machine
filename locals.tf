@@ -6,14 +6,6 @@ data "hcp_packer_image" "postgres-ubuntu-2204" {
 }
 
 locals {
-  // details for outputs 
-  vms = [
-    {
-      virtual_machine_name = module.vm.virtual_machine_name
-      ip_address           = module.vm.ip_address
-    }
-  ]
-
   // T-shirt size mappings for CPU and memory
   sizes = {
     "small"  = { cpu = 1, memory = 1024 }

@@ -1,8 +1,8 @@
-data "hcp_packer_image" "postgres-ubuntu-2204" {
-  bucket_name    = "postgres-ubuntu-2204"
-  channel        = "latest"
-  cloud_provider = "vsphere"
-  region         = "Datacenter"
+data "hcp_packer_artifact" "this" {
+  bucket_name  = "postgres-ubuntu-2204"
+  channel_name = "latest"
+  platform     = "vsphere"
+  region       = "Datacenter"
 }
 
 locals {

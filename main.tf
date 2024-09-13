@@ -2,7 +2,7 @@ module "vm" {
   source  = "app.terraform.io/tfo-apj-demos/virtual-machine/vsphere"
   version = "~> 1.4"
 
-  template          = data.hcp_packer_image.postgres-ubuntu-2204.cloud_image_id
+  template          = data.hcp_packer_artifact.this.external_identifier
   hostname          = var.hostname
   num_cpus          = local.sizes[var.size].cpu
   memory            = local.sizes[var.size].memory

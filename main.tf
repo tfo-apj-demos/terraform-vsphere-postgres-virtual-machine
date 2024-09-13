@@ -1,5 +1,6 @@
 module "vm" {
-  source = "github.com/tfo-apj-demos/terraform-vsphere-virtual-machine"
+  source  = "app.terraform.io/tfo-apj-demos/virtual-machine/vsphere"
+  version = "~> 1.4"
 
   template          = data.hcp_packer_image.postgres-ubuntu-2204.cloud_image_id
   hostname          = var.hostname

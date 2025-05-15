@@ -1,6 +1,6 @@
 module "vm" {
   source  = "app.terraform.io/tfo-apj-demos/virtual-machine/vsphere"
-  version = "~> 1.4"
+  version = "1.4.1"
 
   template          = data.hcp_packer_artifact.this.external_identifier
   hostname          = var.hostname
